@@ -18,7 +18,6 @@ q2) write a function to count the number of occurences of specified digit in a s
 # TODO:
     
     - Complete restful api implementation for q1 (api\_endpoints.md)
-    - Build Digit occurenece function
     - Unit tests? 
     - convert digi function to full restful api
     - write SQL queuries for q4 
