@@ -35,7 +35,7 @@ func validateParams(seriesIncrement int64, specifiedDigit int, seriesType int) e
 	return nil
 }
 
-func digitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, specifiedDigit int, seriesType int) (int, error) {
+func DigitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, specifiedDigit int, seriesType int) (int, error) {
 	//Input: range of values, increment number + odd/even modifier.
 	//Output: number of char digit occurences for all numbers in series.
 
@@ -59,7 +59,7 @@ func digitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, 
 			numStr := strconv.FormatInt(temp, 10)
 			for j := 0; j < len(numStr); j++ {
 				if numStr[j] == (byte(specifiedDigit) + '0') {
-					fmt.Printf("%d @ %s\n",numStr[j], numStr)
+					//fmt.Printf("%d @ %s\n",numStr[j], numStr)
 					count++
 				}
 			}
@@ -69,8 +69,7 @@ func digitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, 
 
 	return count, nil
 }
-
-
+/*
 func main() {
 	seriesStart := int64(0)
 	seriesEnd := int64(100)
@@ -87,3 +86,4 @@ func main() {
 	fmt.Printf("Number of occurrences of digit %d between %d and %d: %d\n",
 		specifiedDigit, seriesStart, seriesEnd, result)
 }
+*/
