@@ -13,3 +13,15 @@ q2) write a function to count the number of occurences of specified digit in a s
 
     ex: fn digit_counter(1, 11, 1, 1, 1) => 4
             //(Represented by the tally of elements [1,10,11]
+
+
+# TODO:
+    
+    - Complete restful api implementation for q1 (api\_endpoints.md)
+    - Build Digit occurenece function
+    - Unit tests? 
+    - convert digi function to full restful api
+    - write SQL queuries for q4 
+    - Write deployment instructions
+    - Clean README
+

@@ -1,0 +1,36 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go build outputs
+/bin/
+/obj/
+*.out
+*.test
+
+# Vendor folder (if you use Go modules)
+vendor/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Mac system files
+.DS_Store
+
+# Node modules (if you ever add front-end stuff)
+node_modules/
+
+# Environment files
+.env
+
