@@ -1,3 +1,4 @@
+//digitOccurence.go - Contains core logic to count how many times a specific digit appears within a given range of intervals
 package main
 
 import (
@@ -6,6 +7,7 @@ import (
 )
 
 func validate_helper(num int64, seriesType int) (bool) {
+	//validates seriesType of the form [1,2,3] & handles corresponding odd-even matching
 	if seriesType == 1 {
 		return true
 	} else if (seriesType == 2) && (num%2 == 0) {
@@ -25,6 +27,7 @@ func validate_helper(num int64, seriesType int) (bool) {
 }
 
 func validateParams(seriesIncrement int64, specifiedDigit int, seriesType int) error {
+	//Validates specifiedDigit is (0,9), seriesType = [1 || 2 || 3]
 
 	if specifiedDigit < 0 || specifiedDigit > 9 {
 		return fmt.Errorf("specifiedDigit must be between 0 and 9")
@@ -44,7 +47,7 @@ func DigitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, 
 	}
 
 	if seriesIncrement < 0 {
-		//Swap start and end
+		//Handles edge-case for descending seriesIncrement
 		seriesStart, seriesEnd = seriesEnd, seriesStart
 		seriesIncrement = -seriesIncrement
 	
@@ -69,21 +72,3 @@ func DigitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, 
 
 	return count, nil
 }
-/*
-func main() {
-	seriesStart := int64(0)
-	seriesEnd := int64(100)
-	seriesIncrement := int64(1)
-	specifiedDigit := int(0)
-	seriesType := int(1)
-
-	result, err := digitOccurrence(seriesStart, seriesEnd, seriesIncrement, specifiedDigit, seriesType)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Printf("Number of occurrences of digit %d between %d and %d: %d\n",
-		specifiedDigit, seriesStart, seriesEnd, result)
-}
-*/
