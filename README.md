@@ -1,26 +1,21 @@
-q1) given a set of tables, design a rest api which supports CRUD operations + provide all rest endpoints that would be necessary for CRUD and the varius objects.
+#### Deployment Instructions
 
-q2) write a function to count the number of occurences of specified digit in a series.
-        Parameters: - SeriesStart:  beginning # of series [-(2^53-1), (2^53 - 1)]
-                    - SeriesEnd:    end # of series.    [-(2^53-1), (2^53 - 1)]
-                    - SeriesIncr:   determines incr between elements of the series
-                    - SpecifiedDigit:   target digit to track through series
-                    - SeriesType:   identifier for which items in the series to analyze
-                                    * 1: analyze all elements in the series
-                                    * 2: analyze only even numbered elements
-                                    * 3: "" odd elements.
+clone the repository
 
+```
+git clone https://github.com/maccooper/epbc_assessment
+cd epbc_assessment
+go mod tidy
 
-    ex: fn digit_counter(1, 11, 1, 1, 1) => 4
-            //(Represented by the tally of elements [1,10,11]
+go run ./src/server.go ./src/handler.go ./src/digitOccurrence.go
 
+```
+
+open your browser, or use curl to visit http://localhost:8080/digit-occurrence?seriesStart=1&seriesEnd=11&seriesIncrement=1&specifiedDigit=1&seriesType=1
 
 # TODO:
     
-    - Complete restful api implementation for q1 (api\_endpoints.md)
-    - Unit tests? 
-    - convert digi function to full restful api
-    - write SQL queuries for q4 
+    - write SQL queuries for q4.3-5
     - Write deployment instructions
     - Clean README
 

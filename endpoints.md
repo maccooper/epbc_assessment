@@ -1,9 +1,7 @@
-# Tables
-
 
 # API Endpoints
 
-API endpoints built for transactional database provided within EPBC Homework assignment, tables for database can be found at the bottom of this documentation.
+API endpoints built for transactional database provided within EPBC Homework assignment, tables for database can be found within the associated pdf in the repository.
 
 Goal: Built CRUD Operations for each table. [Order, LineItem, Customer, CustomerAddress, ReturnItem]
 
