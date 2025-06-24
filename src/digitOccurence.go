@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
-func validate_helper(num int, seriesType int) (bool) {
+func validate_helper(num int64, seriesType int) (bool) {
 	if seriesType == 1 {
 		return true
 	} else if (seriesType == 2) && (num%2 == 0) {
@@ -19,10 +20,8 @@ func validate_helper(num int, seriesType int) (bool) {
 	} else if (seriesType == 3) && (num%2 != 0) {
 		//wanted odds, got odds.
 		return true
-	} else {
-		//needs error handling for seriesType != [1,2,3]
-		return false
 	}
+	return false
 }
 
 func validateParams(seriesIncrement int64, specifiedDigit int, seriesType int) error {
@@ -36,18 +35,55 @@ func validateParams(seriesIncrement int64, specifiedDigit int, seriesType int) e
 	return nil
 }
 
-func digitOccurence(seriesStart int64, seriesEnd int64, seriesIncrement int64, specifiedDigit int, seriesType int) (int, error) {
+func digitOccurrence(seriesStart int64, seriesEnd int64, seriesIncrement int64, specifiedDigit int, seriesType int) (int, error) {
+	//Input: range of values, increment number + odd/even modifier.
+	//Output: number of char digit occurences for all numbers in series.
+
 	if err := validateParams(seriesIncrement, specifiedDigit, seriesType); err != nil {
 		return 0, err
 	}
 
-	if(validate_helper(1, 2)) {
-		return 1, nil
+	if seriesIncrement < 0 {
+		//Swap start and end
+		seriesStart, seriesEnd = seriesEnd, seriesStart
+		seriesIncrement = -seriesIncrement
+	
 	}
-	return 0, nil
+
+	var count int = 0;
+
+	for i := seriesStart; i <= seriesEnd; i += seriesIncrement {
+		var temp int64 = i
+		if(validate_helper(i, seriesType)) {
+			//proceed
+			numStr := strconv.FormatInt(temp, 10)
+			for j := 0; j < len(numStr); j++ {
+				if numStr[j] == (byte(specifiedDigit) + '0') {
+					fmt.Printf("%d @ %s\n",numStr[j], numStr)
+					count++
+				}
+			}
+		}
+
+	}
+
+	return count, nil
 }
 
 
 func main() {
-	fmt.Println(digitOccurence(1, 11, 1, 1, 1))
+	seriesStart := int64(0)
+	seriesEnd := int64(100)
+	seriesIncrement := int64(1)
+	specifiedDigit := int(0)
+	seriesType := int(1)
+
+	result, err := digitOccurrence(seriesStart, seriesEnd, seriesIncrement, specifiedDigit, seriesType)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Printf("Number of occurrences of digit %d between %d and %d: %d\n",
+		specifiedDigit, seriesStart, seriesEnd, result)
 }
